@@ -1,0 +1,1 @@
+*/5 * * * * root python /app/monitor.py >> /var/log/cron.log 2>&1
