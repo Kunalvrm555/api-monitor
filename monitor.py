@@ -4,7 +4,7 @@ import smtplib as smtp
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
-
+from datetime import datetime
 # Load environment variables from .env file
 load_dotenv()
 
@@ -48,7 +48,7 @@ def check_endpoint_availability():
             message = f"The endpoint {endpoint_url} returned a status code: {response.status_code}"
             send_email(subject, message)
         else:
-            print("Endpoint is working fine", response.text)
+            print("Endpoint is available, last checked --> " + str(datetime.now()))
     except requests.RequestException as e:
         subject = "Important - Endpoint Unavailable"
         message = f"An error occurred while accessing the endpoint {endpoint_url}: {str(e)}"
